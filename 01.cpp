@@ -17,7 +17,15 @@ public:
   int roomno;
   custemer cust;
   int day;
-  float price;
+  float price(){
+		if(type == "Single"){
+			return day*500;
+		}else if(type == "Double"){
+			return day*1000;
+		}else if(type == "Family"){
+			return day*3000;
+		}
+	}
   int status=0;
 
 };
