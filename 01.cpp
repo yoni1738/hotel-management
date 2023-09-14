@@ -87,6 +87,20 @@ void getstatus(){
 		}
 		out.close();
 	}
+void show(room rooms){
+    system("cls");
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Room number: "<<rooms.roomno<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Room type: "<<rooms.type<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Customer First Name : "<<rooms.cust.name<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Id Number : "<<rooms.cust.idno<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Age: "<<rooms.cust.age<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Sex: "<<rooms.cust.sex<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Address: "<<rooms.cust.address<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Phone: "<<rooms.cust.phone<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t From date: "<<rooms.cust.from_date<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t To date: "<<rooms.cust.to_date<<endl;
+    cout<<setw(26)<<setiosflags(ios::left)<<"\t Price: "<<rooms.price()<<endl;
+  }
   };
 int main(){
 
