@@ -488,6 +488,61 @@ void available(){
    <<"\t\t\t"<<familyR<<" family standard room available \n"; 
 }
   };
-int main(){
-
+void choose(); 
+int main() 
+{ 
+ cout<<"\t\t WELLCOME TO OUR HOTEL \n\n"; 
+ choose(); 
+    return 0; 
+} 
+void choose(){ 
+ hotelmng hotelroom; 
+ hotelroom.getstatus(); 
+ char choice; 
+ while(true){ 
+  system("cls"); 
+  cout<<"\t what kind of serviec do you went\n" 
+   <<"\t\t A, room check-in \n" 
+   <<"\t\t B, room check-out \n" 
+   <<"\t\t C, see available room\n" 
+   <<"\t\t D, to see personal information\n" 
+   <<"\t\t E, show all reserved rooms\n" 
+   <<"\t\t F, exit\n"; 
+   first: 
+  cout<<"\t choose: "; 
+  cin>>choice; 
+  choice = toupper(choice); 
+  switch(choice){ 
+   case 'A': 
+    system("cls"); 
+    hotelroom.check_in(); 
+    getch(); 
+    break; 
+   case 'B': 
+    system("cls"); 
+    hotelroom.check_out(); 
+    getch(); 
+    break; 
+   case 'C': 
+    system("cls"); 
+    hotelroom.available(); 
+    getch(); 
+    break; 
+   case 'D': 
+    system("cls"); 
+    hotelroom.showpersonalinfo(); 
+    getch(); 
+    break; 
+   case 'E': 
+    system("cls"); 
+    hotelroom.showallresurvedroom(); 
+    break; 
+   case 'F': 
+    exit(1); 
+    break; 
+   default: 
+    cout<<"\t\t Please inter a valid choice \n"; 
+    goto first; 
+  } 
+ } 
 }
