@@ -238,7 +238,8 @@ bool is_available(char roomtype){
 
 }
   void check_out();
-  void showRoomInfo();
+  void showallresurvedroom();
+  void showpersonalinfo();
 void getstatus(){
 		int roomnum,i;
 		ifstream infile("rooms.txt", ios::in);
