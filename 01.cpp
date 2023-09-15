@@ -220,6 +220,189 @@ void book(string roomtype){
 
 	}
 
+
+void showpersonalinfo(){
+
+		string name;
+
+		int found=0;
+
+		if(singleR != 6 || doubleR != 6 || familyR != 6){
+
+			lable2:
+
+			cout<<"\t enter customers first name (X to return): ";
+
+			cin>>name;
+
+			for(int i=0; i<18;i++){
+
+				if(rm[i].status == 1 && rm[i].cust.name == name){
+
+					found++;
+
+					show(rm[i]);
+
+					getch();
+
+				}
+
+			}
+
+			if(name == "X" || name == "x"){
+
+			}else if(found == 0){
+
+				cout<<"\t there is no person found by the name "<<name<<endl;
+
+				cout<<"\t try by another name \n";
+
+				goto lable2;
+
+			}
+
+		}else{cout<<"\t Sorry there is no person in our room \n";}
+
+	}
+
+	void showallresurvedroom(){
+
+		int found =0;
+
+		system("cls");
+
+		for(int i=0; i<18; i++){
+
+			if(rm[i].status == 1){
+
+					found++;
+
+				cout<<"\t Room number: "<<rm[i].roomno<<endl;
+
+				cout<<"\t Room type: "<<rm[i].type<<endl;
+
+				cout<<"\t Customer First Name : "<<rm[i].cust.name<<endl;
+
+				cout<<"\t Id Number : "<<rm[i].cust.idno<<endl;
+
+				cout<<"\t Age: "<<rm[i].cust.age<<endl;
+
+				cout<<"\t Sex: "<<rm[i].cust.sex<<endl;
+
+				cout<<"\t Address: "<<rm[i].cust.address<<endl;
+
+				cout<<"\t Phone: "<<rm[i].cust.phone<<endl;
+
+				cout<<"\t From date: "<<rm[i].cust.from_date<<endl;
+
+				cout<<"\t to date: "<<rm[i].cust.to_date<<endl;
+
+				cout<<"\t price: "<<rm[i].price()<<endl;
+
+				cout<<"\t---------------------------------------\n";
+
+				getch();
+
+			}
+
+		}
+
+		if(found == 0){
+
+			cout<<"\t there is no reserved room all rooms are free \n";
+
+			getch();
+
+		}
+
+	}
+
+
+
+void check_out(){
+
+		int roomn;
+
+		char answer;
+
+		if(singleR != 6 || doubleR != 6 || familyR != 6){
+
+			lable:
+
+			cout<<"\t Please enter room number (0 to exit): ";
+
+			cin>>roomn;
+
+			if (roomn>0 && roomn<=18 && rm[roomn-1].status == 1){
+
+				show(rm[roomn-1]);
+
+				second:
+
+				cout<<"\t is this right(Y/N): ";
+
+				cin>>answer;
+
+				answer = toupper(answer);
+
+				if(answer=='Y'){
+
+						if(rm[roomn-1].type == "Single"){
+
+							singleR++;
+
+						}else if(rm[roomn-1].type == "Double"){
+
+							doubleR++;
+
+						}else if(rm[roomn-1].type == "Family"){
+
+							familyR++;
+
+						}
+
+					rm[roomn -1] = room();
+
+					save();
+
+					cout<<"\t\t room checked out successfully \n";
+
+					cout<<"\t---------------------------------------\n";
+
+				}else if(answer == 'N'){
+
+					cout<<"\t Sorry we have only this information by room number "<<roomn<<"\n";
+
+					cout<<"\t or you can try by changing room number \n";
+
+					goto lable;
+
+				}else{
+
+					cout<<"\t please enter only (Y/N) \n";
+
+					goto second;
+
+				}
+
+			}else if(roomn>18 || roomn<0){
+
+				cout<<"\t Please enter a valid room number \n";
+
+				goto lable;
+
+			}else if(rm[roomn-1].status == 0){
+
+				cout<<"\t this room is empty please enter a valid room number \n";
+
+				goto lable;
+
+			}else{}
+
+		}else{cout<<"\t Sorry there is no person in our room \n";}
+
+}
+
 bool is_available(char roomtype){
 
 		if(roomtype == 'S'){
