@@ -43,11 +43,11 @@ public:
 		char choice;
 		string name;
 		if(haveFreeRoom()){
-			cout<<"\t what kind of room do you went\n"
+			cout<<"\t What kind of room do you went\n"
 				<<"\t\t A, Single bedroom \n"
 				<<"\t\t B, Double bedroom \n"
 				<<"\t\t C, Family standard room \n"
-				<<"\t\t D, back to main menu \n";
+				<<"\t\t D, Back to main menu \n";
 			first:
 			cout<<"\t Choose: ";
 			cin>>choice;
@@ -157,8 +157,8 @@ public:
 			}
 			if(name == "X" || name == "x"){
 			}else if(found == 0){
-				cout<<"\t there is no person found by the name "<<name<<" "<<fname<<endl;
-				cout<<"\t try by another name \n";
+				cout<<"\t There is no person found by the name "<<name<<" "<<fname<<endl;
+				cout<<"\t Try by another name \n";
 				goto lable2;
 			}
 		}else{cout<<"\t Sorry there is no person in our room \n";}
@@ -186,7 +186,7 @@ public:
 			}
 		}
 		if(found == 0){
-			cout<<"\t there is no reserved room all rooms are free \n";
+			cout<<"\t There is no reserved room all rooms are free \n";
 			getch();
 		}
 	}
@@ -200,7 +200,7 @@ public:
 			if (roomn>0 && roomn<=18 && rm[roomn-1].status == "taken"){
 				show(rm[roomn-1]);
 				second:
-				cout<<"\t is this right(Y/N): ";
+				cout<<"\t Is this right(Y/N): ";
 				cin>>answer;
 				answer = toupper(answer);
 				if(answer=='Y'){
@@ -210,7 +210,7 @@ public:
 					cout<<"\t---------------------------------------\n";
 				}else if(answer == 'N'){
 					cout<<"\t Sorry we have only this information by room number "<<roomn<<"\n";
-					cout<<"\t or you can try by changing room number \n";
+					cout<<"\t Or you can try by changing room number \n";
 					goto lable;
 				}else{
 					cout<<"\t please enter only (Y/N) \n";
@@ -220,7 +220,7 @@ public:
 				cout<<"\t Please enter a valid room number \n";
 				goto lable;
 			}else if(rm[roomn-1].status == "free" || rm[roomn-1].status == "needClean"){
-				cout<<"\t this room is empty please enter a valid room number \n";
+				cout<<"\t This room is empty please enter a valid room number \n";
 				goto lable;
 			}
 		}else{cout<<"\t Sorry there is no person in our room \n";}
@@ -353,7 +353,7 @@ public:
 			}
 			if(j==0){
 				system("cls");
-				cout<<"\t\t there is no room needs to clean \n";
+				cout<<"\t\t There is no room needs to clean \n";
 				getch();
 				break;
 			}
@@ -408,12 +408,12 @@ void choose(){
 	char choice;
 	while(true){
 		system("cls");
-		cout<<"\t What kind of serviec do you went\n"
-			<<"\t\t A, room check-in \n"
-			<<"\t\t B, room check-out \n"
-			<<"\t\t C, see available room\n"
-			<<"\t\t D, to see personal information\n"
-			<<"\t\t E, show all reserved rooms\n"
+		cout<<"\t What kind of service do you went\n"
+			<<"\t\t A, Room check-in \n"
+			<<"\t\t B, Room check-out \n"
+			<<"\t\t C, See available room\n"
+			<<"\t\t D, To see personal information\n"
+			<<"\t\t E, Show all reserved rooms\n"
 			<<"\t\t F, Manager side\n"
 			<<"\t\t G, Exit\n";
 		first:
