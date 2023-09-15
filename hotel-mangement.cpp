@@ -19,11 +19,11 @@ public:
 };
 class room{
 public:
-  string type;
-  int roomno;
-  custemer cust;
-  int day;
-  float price(){
+	string type;
+	int roomno;
+	custemer cust;
+	int day;
+	float price(){
 		if(type == "Single"){
 			return day*500;
 		}else if(type == "Double"){
@@ -32,14 +32,14 @@ public:
 			return day*3000;
 		}
 	}
-  string status="free";
+	string status="free";
 };
 class hotelmng{
 private:
-  room rm[18];
-  int roomcount;
+	room rm[18];
+	int roomcount;
 public:
-  void check_in(){
+	void check_in(){
 		char choice;
 		string name;
 		if(haveFreeRoom()){
@@ -81,9 +81,11 @@ public:
 				goto first;
 				break;
 			}
-		}else{cout<<"\t Sorry all rooms are reserver \n";}
-}
-void book(string roomtype){
+		}else{
+			cout<<"\t Sorry all rooms are reserver \n";
+		}
+	}
+	void book(string roomtype){
 		char answer;
 
 		cout<<"\t Person name: ";
@@ -136,7 +138,7 @@ void book(string roomtype){
 			goto third;
 		}
 	}
-void showpersonalinfo(){
+	void showpersonalinfo(){
 		string name;
 		string fname;
 		int found=0;
@@ -188,7 +190,7 @@ void showpersonalinfo(){
 			getch();
 		}
 	}
-void check_out(){
+	void check_out(){
 		int roomn;
 		char answer;
 		if(haveTakenRoom()){
@@ -222,8 +224,8 @@ void check_out(){
 				goto lable;
 			}
 		}else{cout<<"\t Sorry there is no person in our room \n";}
-}
-bool is_available(char roomtype){
+	}
+	bool is_available(char roomtype){
 		if(roomtype == 'S'){
 				for(int i = 0;i<6; i++){
 					if(rm[i].status == "free"){
@@ -250,7 +252,7 @@ bool is_available(char roomtype){
 			return false;
 		}
 	}
-void getstatus(){
+	void getstatus(){
 		int roomnum,i;
 		ifstream in("bookedstatus.txt", ios::in);
 		while(in>>roomnum){
@@ -292,7 +294,7 @@ void getstatus(){
 		}
 		out.close();
 	}
-void show(room rooms){
+	void show(room rooms){
     system("cls");
     cout<<setw(26)<<setiosflags(ios::left)<<"\t Room number: "<<rooms.roomno<<endl;
     cout<<setw(26)<<setiosflags(ios::left)<<"\t Room type: "<<rooms.type<<endl;
@@ -307,7 +309,7 @@ void show(room rooms){
     cout<<setw(26)<<setiosflags(ios::left)<<"\t To date: "<<rooms.cust.to_date<<endl;
     cout<<setw(26)<<setiosflags(ios::left)<<"\t Price: "<<rooms.price()<<endl;
   }
-void available(){
+  void available(){
 		cout<<setw(42)<<setiosflags(ios::left)<<"\t Available single room numbers: ";
 		for(int i = 0; i<6;i++){
 			if(rm[i].status == "free"){
@@ -339,7 +341,7 @@ void available(){
 		}
 		cout<<endl;
 	}
-void managerSide(){
+	void managerSide(){
 		int roomno,j=0;
 		while(true){
 			cout<<"\t\t Rooms recently has been taken and need to be cleaned \n";
@@ -378,7 +380,7 @@ void managerSide(){
 			}
 		}
 	}
-bool haveFreeRoom(){
+	bool haveFreeRoom(){
 		for(int i=0; i<18; i++){
 			if(rm[i].status == "free"){
 				return true;
@@ -386,7 +388,7 @@ bool haveFreeRoom(){
 		}
 		return false;
 	}
-bool haveTakenRoom(){
+	bool haveTakenRoom(){
 		for(int i=0; i<18; i++){
 			if(rm[i].status == "taken"){
 				return true;
@@ -394,66 +396,65 @@ bool haveTakenRoom(){
 		}
 		return false;
 	}
-  };
+};
 void choose();
-int main()
-{
- choose();
- return 0;
+int main(){
+	choose();
+	return 0;
 }
 void choose(){
- hotelmng hotelroom;
- hotelroom.getstatus();
- char choice;
- while(true){
-  system("cls");
-  cout<<"\t what kind of serviec do you went\n"
-   <<"\t\t A, room check-in \n"
-   <<"\t\t B, room check-out \n"
-   <<"\t\t C, see available room\n"
-   <<"\t\t D, to see personal information\n"
-   <<"\t\t E, show all reserved rooms\n"
-   <<"\t\t F, Manager side\n"
-   <<"\t\t G, Exit\n";
-   first:
-  cout<<"\t choose: ";
-  cin>>choice;
-  choice = toupper(choice);
-  switch(choice){
-   case 'A':
-    system("cls");
-    hotelroom.check_in();
-    getch();
-    break;
-   case 'B':
-    system("cls");
-    hotelroom.check_out();
-    getch();
-    break;
-   case 'C':
-    system("cls");
-    hotelroom.available();
-    getch();
-    break;
-   case 'D':
-    system("cls");
-    hotelroom.showpersonalinfo();
-    getch();
-    break;
-   case 'E':
-    system("cls");
-    hotelroom.showallresurvedroom();
-    break;
-   case 'F':
-	system("cls");
-	hotelroom.managerSide();
-	break;
-    case 'G':
-    exit(1);
-    break;
-   default:
-    cout<<"\t\t Please inter a valid choice \n";
-    goto first;
-  }
- }
+	hotelmng hotelroom;
+	hotelroom.getstatus();
+	char choice;
+	while(true){
+		system("cls");
+		cout<<"\t What kind of serviec do you went\n"
+			<<"\t\t A, room check-in \n"
+			<<"\t\t B, room check-out \n"
+			<<"\t\t C, see available room\n"
+			<<"\t\t D, to see personal information\n"
+			<<"\t\t E, show all reserved rooms\n"
+			<<"\t\t F, Manager side\n"
+			<<"\t\t G, Exit\n";
+		first:
+		cout<<"\t choose: ";
+		cin>>choice;
+		choice = toupper(choice);
+		switch(choice){
+			case 'A':
+				system("cls");
+				hotelroom.check_in();
+				getch();
+				break;
+			case 'B':
+				system("cls");
+				hotelroom.check_out();
+				getch();
+				break;
+			case 'C':
+				system("cls");
+				hotelroom.available();
+				getch();
+				break;
+			case 'D':
+				system("cls");
+				hotelroom.showpersonalinfo();
+				getch();
+				break;
+			case 'E':
+				system("cls");
+				hotelroom.showallresurvedroom();
+				break;
+			case 'F':
+				system("cls");
+				hotelroom.managerSide();
+				break;
+			case 'G':
+				exit(1);
+				break;
+			default:
+				cout<<"\t\t Please inter a valid choice \n";
+				goto first;
+		}
+	}
 }
