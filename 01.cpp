@@ -37,7 +37,201 @@ private:
   room rm[18];
   int roomcount;
 public:
-  void check_in();
+  void check_in(){
+
+		char choice;
+
+		string name;
+
+		if(singleR != 0 || doubleR != 0 || familyR != 0){
+
+			cout<<"\t what kind of room do you went\n"
+
+				<<"\t\t A, Single bedroom \n"
+
+				<<"\t\t B, Double bedroom \n"
+
+				<<"\t\t C, Family standard room \n"
+
+				<<"\t\t D, back to main menu \n";
+
+			first:
+
+			cout<<"\t Choose: ";
+
+			cin>>choice;
+
+			choice = toupper(choice);
+
+			switch(choice){
+
+			case 'A':
+
+				if(is_available('S')){
+
+					book("Single");
+
+				}else{
+
+					cout<<"\t\t Sorry all single bed rooms are taken \n";
+
+				}
+
+				break;
+
+			case 'B':
+
+				if(is_available('D')){
+
+					book("Double");
+
+				}else{
+
+					cout<<"\t\t Sorry all double bed rooms are taken \n";
+
+				}
+
+				break;
+
+			case 'C':
+
+				if(is_available('F')){
+
+					book("Family");
+
+				}else{
+
+					cout<<"\t\t Sorry all family standard rooms are taken \n";
+
+				}
+
+				break;
+
+			case 'D':
+
+				break;
+
+			default:
+
+				cout<<"\t\t Please inter a valid choice \n";
+
+				goto first;
+
+				break;
+
+			}
+
+		}else{cout<<"\t Sorry all rooms are reserver \n";}
+
+}
+
+
+
+void book(string roomtype){
+
+		if(roomtype=="Single"){
+
+			roomcount=6-singleR;
+
+			singleR--;
+
+		}else if(roomtype=="Double"){
+
+			roomcount=12-doubleR;
+
+			doubleR--;
+
+		}else if(roomtype=="Family"){
+
+			roomcount=18-familyR;
+
+			familyR--;
+
+		}
+
+		cout<<"\t Person name: ";
+
+		cin>>rm[roomcount].cust.name;
+
+
+
+		cout<<"\t Id number: ";
+
+		cin>>rm[roomcount].cust.idno;
+
+
+
+		cout<<"\t Enter persons sex: ";
+
+		cin>>rm[roomcount].cust.sex;
+
+
+
+		cout<<"\t Persons age: ";
+
+		cin>>rm[roomcount].cust.age;
+
+
+
+		cout<<"\t Enter Address: ";
+
+		cin>>rm[roomcount].cust.address;
+
+
+
+		cout<<"\t Enter Phone: ";
+
+		cin>>rm[roomcount].cust.phone;
+
+
+
+		cout<<"\t Enter From Date: ";
+
+		cin>>rm[roomcount].cust.from_date;
+
+
+
+		cout<<"\t Enter to  Date: ";
+
+		cin>>rm[roomcount].cust.to_date;
+
+
+
+		rm[roomcount].type=roomtype;
+
+		rm[roomcount].status=1;
+
+		rm[roomcount].roomno = roomcount+1;
+
+		rm[roomcount].day = rm[roomcount].cust.to_date - rm[roomcount].cust.from_date;
+
+		show(rm[roomcount]);
+
+		cout<<"\t\t Room checked in successfully \n";
+
+		cout<<"\t---------------------------------------\n";
+
+		save();
+
+	}
+
+bool is_available(char roomtype){
+
+		if(roomtype == 'S'){
+
+			return bool(singleR);
+
+		}else if(roomtype == 'D'){
+
+			return bool(doubleR);
+
+		}else if(roomtype == 'F'){
+
+			return bool(familyR);
+
+		}
+
+}
   void check_out();
   void showRoomInfo();
 void getstatus(){
