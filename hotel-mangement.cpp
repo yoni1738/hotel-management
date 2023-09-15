@@ -3,18 +3,19 @@
 #include <string>
 #include <conio.h>
 #include <iomanip>
+
 using namespace std;
 class custemer{
 public:
-  int from_date;
-  int to_date;
-  string name;
-  string fname;
-  int age;
-  char sex;
-  int idno;
-  string address;
-  int phone;
+	int from_date;
+	int to_date;
+	string name;
+	string fname;
+	int age;
+	char sex;
+	int idno;
+	string address;
+	int phone;
 };
 class room{
 public:
@@ -111,7 +112,7 @@ void book(string roomtype){
 
 		cout<<"\t Enter to  Date: ";
 		cin>>rm[roomcount].cust.to_date;
-	
+
 		rm[roomcount].type=roomtype;
 		rm[roomcount].status="taken";
 		rm[roomcount].roomno = roomcount+1;
@@ -394,65 +395,65 @@ bool haveTakenRoom(){
 		return false;
 	}
   };
-void choose(); 
-int main() 
-{ 
- choose(); 
- return 0; 
-} 
-void choose(){ 
- hotelmng hotelroom; 
- hotelroom.getstatus(); 
- char choice; 
- while(true){ 
-  system("cls"); 
-  cout<<"\t what kind of serviec do you went\n" 
-   <<"\t\t A, room check-in \n" 
-   <<"\t\t B, room check-out \n" 
-   <<"\t\t C, see available room\n" 
-   <<"\t\t D, to see personal information\n" 
-   <<"\t\t E, show all reserved rooms\n" 
+void choose();
+int main()
+{
+ choose();
+ return 0;
+}
+void choose(){
+ hotelmng hotelroom;
+ hotelroom.getstatus();
+ char choice;
+ while(true){
+  system("cls");
+  cout<<"\t what kind of serviec do you went\n"
+   <<"\t\t A, room check-in \n"
+   <<"\t\t B, room check-out \n"
+   <<"\t\t C, see available room\n"
+   <<"\t\t D, to see personal information\n"
+   <<"\t\t E, show all reserved rooms\n"
    <<"\t\t F, Manager side\n"
    <<"\t\t G, Exit\n";
-   first: 
-  cout<<"\t choose: "; 
-  cin>>choice; 
-  choice = toupper(choice); 
-  switch(choice){ 
-   case 'A': 
-    system("cls"); 
-    hotelroom.check_in(); 
-    getch(); 
-    break; 
-   case 'B': 
-    system("cls"); 
-    hotelroom.check_out(); 
-    getch(); 
-    break; 
-   case 'C': 
-    system("cls"); 
-    hotelroom.available(); 
-    getch(); 
-    break; 
-   case 'D': 
-    system("cls"); 
-    hotelroom.showpersonalinfo(); 
-    getch(); 
-    break; 
-   case 'E': 
-    system("cls"); 
-    hotelroom.showallresurvedroom(); 
-    break; 
+   first:
+  cout<<"\t choose: ";
+  cin>>choice;
+  choice = toupper(choice);
+  switch(choice){
+   case 'A':
+    system("cls");
+    hotelroom.check_in();
+    getch();
+    break;
+   case 'B':
+    system("cls");
+    hotelroom.check_out();
+    getch();
+    break;
+   case 'C':
+    system("cls");
+    hotelroom.available();
+    getch();
+    break;
+   case 'D':
+    system("cls");
+    hotelroom.showpersonalinfo();
+    getch();
+    break;
+   case 'E':
+    system("cls");
+    hotelroom.showallresurvedroom();
+    break;
    case 'F':
 	system("cls");
 	hotelroom.managerSide();
 	break;
     case 'G':
-    exit(1); 
-    break; 
-   default: 
-    cout<<"\t\t Please inter a valid choice \n"; 
-    goto first; 
-  } 
- } 
+    exit(1);
+    break;
+   default:
+    cout<<"\t\t Please inter a valid choice \n";
+    goto first;
+  }
+ }
 }
