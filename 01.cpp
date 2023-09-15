@@ -481,6 +481,12 @@ void show(room rooms){
     cout<<setw(26)<<setiosflags(ios::left)<<"\t To date: "<<rooms.cust.to_date<<endl;
     cout<<setw(26)<<setiosflags(ios::left)<<"\t Price: "<<rooms.price()<<endl;
   }
+void available(){ 
+  cout<<"\t\t We have \n" 
+   <<"\t\t\t"<<singleR<<" single room available \n" 
+   <<"\t\t\t"<<doubleR<<" double room available \n" 
+   <<"\t\t\t"<<familyR<<" family standard room available \n"; 
+}
   };
 int main(){
 
