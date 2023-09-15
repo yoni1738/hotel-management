@@ -1,4 +1,9 @@
 #include<iostream>
+#include <fstream>
+#include <string>
+#include <conio.h>
+#include <iomanip>
+
 using namespace std;
 class custemer{
 public:
