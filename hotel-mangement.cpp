@@ -117,6 +117,7 @@ void book(string roomtype){
 		rm[roomcount].roomno = roomcount+1;
 		rm[roomcount].day = rm[roomcount].cust.to_date - rm[roomcount].cust.from_date;
 		show(rm[roomcount]);
+		third:
 		cout<<"\t Is this right(Y/N): ";
 		cin>>answer;
 		answer = toupper(answer);
